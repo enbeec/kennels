@@ -1,0 +1,9 @@
+.location {
+    width: 60%;
+    margin: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 1px solid goldenrod;
+}
