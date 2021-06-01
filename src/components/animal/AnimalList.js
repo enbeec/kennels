@@ -6,16 +6,14 @@ export const AnimalList = () => {
   const { animals, getAnimals } = useContext(AnimalContext);
 
   useEffect(() => {
-    console.log("AnimalList: useEffect - getAnimals");
     getAnimals();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="animals">
-      {console.log("AnimalList: Render", animals)}
       {animals.map((animal) => (
-        <div classList="animal" id={`animal--${animal.id}`}>
-          <h4 className="animal__name">Name: {animal.name}</h4>
+        <div className="animal" id={"animal--" + animal.id} key={animal.id}>
+          <h3 className="animal__name">Name: {animal.name}</h3>
           <div className="animal__breed">Breed: {animal.breed}</div>
         </div>
       ))}
