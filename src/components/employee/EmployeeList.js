@@ -6,9 +6,8 @@ export const EmployeeList = () => {
   const { employees, getEmployees } = useContext(EmployeeContext);
 
   useEffect(() => {
-    console.log("EmployeeList: useEffect - getEmployees");
     getEmployees();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="employees">
