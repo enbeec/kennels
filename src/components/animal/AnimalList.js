@@ -8,13 +8,13 @@ export const AnimalList = () => {
   useEffect(() => {
     console.log("AnimalList: useEffect - getAnimals");
     getAnimals();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="animals">
       {console.log("AnimalList: Render", animals)}
       {animals.map((animal) => (
-        <div classList="animal" id={`animal--${animal.id}`}>
+        <div className="animal" id={"animal--" + animal.id} key={animal.id}>
           <h4 className="animal__name">Name: {animal.name}</h4>
           <div className="animal__breed">Breed: {animal.breed}</div>
         </div>
