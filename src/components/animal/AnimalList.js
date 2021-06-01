@@ -15,7 +15,7 @@ export const AnimalList = () => {
       {console.log("AnimalList: Render", animals)}
       {animals.map((animal) => (
         <div className="animal" id={"animal--" + animal.id} key={animal.id}>
-          <h4 className="animal__name">Name: {animal.name}</h4>
+          <h3 className="animal__name">Name: {animal.name}</h3>
           <div className="animal__breed">Breed: {animal.breed}</div>
         </div>
       ))}
