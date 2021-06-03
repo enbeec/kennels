@@ -13,50 +13,37 @@ import { AnimalForm } from "./animal/AnimalForm";
 export const ApplicationViews = () => {
   return (
     <>
-      {/* Render the location list when http://localhost:3000/ */}
-      <LocationProvider>
-        <Route exact path="/">
-          <LocationList />
-        </Route>
-      </LocationProvider>
-
-      {/* Render the location list when http://localhost:3000/locations */}
-      <LocationProvider>
-        <Route exact path="/locations">
-          <LocationList />
-        </Route>
-      </LocationProvider>
-
-      {/* Render the location list when http://localhost:3000/animals */}
-      <AnimalProvider>
-        <Route exact path="/animals">
-          <AnimalList />
-        </Route>
-      </AnimalProvider>
-
-      <AnimalProvider>
-        <LocationProvider>
-          <CustomerProvider>
-            <Route exact path="/animals/create">
-              <AnimalForm />
-            </Route>
-          </CustomerProvider>
-        </LocationProvider>
-      </AnimalProvider>
-
-      {/* Render the location list when http://localhost:3000/employees */}
       <EmployeeProvider>
-        <Route exact path="/employees">
-          <EmployeeList />
-        </Route>
-      </EmployeeProvider>
+        <LocationProvider>
+          <AnimalProvider>
+            <CustomerProvider>
+              <Route exact path="/">
+                <LocationList />
+              </Route>
 
-      {/* Render the location list when http://localhost:3000/customers */}
-      <CustomerProvider>
-        <Route exact path="/customers">
-          <CustomerList />
-        </Route>
-      </CustomerProvider>
+              <Route exact path="/locations">
+                <LocationList />
+              </Route>
+
+              <Route exact path="/animals/create">
+                <AnimalForm />
+              </Route>
+
+              <Route exact path="/animals">
+                <AnimalList />
+              </Route>
+
+              <Route exact path="/employees">
+                <EmployeeList />
+              </Route>
+
+              <Route exact path="/customers">
+                <CustomerList />
+              </Route>
+            </CustomerProvider>
+          </AnimalProvider>
+        </LocationProvider>
+      </EmployeeProvider>
 
       <Route path="/">
         <footer>
