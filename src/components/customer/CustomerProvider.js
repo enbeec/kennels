@@ -20,7 +20,7 @@ export const CustomerProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(customerObj),
-    }).then(getCustomers);
+    });
   };
 
   return (

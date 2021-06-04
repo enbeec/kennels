@@ -10,16 +10,18 @@ export const CustomerList = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <section className="customers">
-      {customers.map((customer) => (
-        <div
-          className="customer"
-          id={"customer--" + customer.id}
-          key={customer.id}
-        >
-          <h3 className="customer__name">{customer.name}</h3>
-        </div>
-      ))}
-    </section>
+    <>
+      <section className="customers">
+        {customers.map((customer) => (
+          <div
+            className="customer"
+            id={"customer--" + customer.id}
+            key={customer.id}
+          >
+            <h3 className="customer__name">{customer.name}</h3>
+          </div>
+        ))}
+      </section>
+    </>
   );
 };
