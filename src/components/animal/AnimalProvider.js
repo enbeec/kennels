@@ -15,12 +15,6 @@ export const AnimalProvider = (props) => {
       .then(setAnimals);
   };
 
-  const getAnimal = (id) => {
-    return fetch(animalsURL + `/${id}/?_expand=location&_expand=customer`).then(
-      (res) => res.json()
-    );
-  };
-
   const addAnimal = (animalObj) => {
     return fetch(animalsURL, {
       method: "POST",
@@ -32,9 +26,7 @@ export const AnimalProvider = (props) => {
   };
 
   return (
-    <AnimalContext.Provider
-      value={{ animals, getAnimals, addAnimal, getAnimal }}
-    >
+    <AnimalContext.Provider value={{ animals, getAnimals, addAnimal }}>
       {props.children}
     </AnimalContext.Provider>
   );

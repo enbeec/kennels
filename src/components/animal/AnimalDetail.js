@@ -4,15 +4,19 @@ import "./Animal.css";
 import { useParams } from "react-router-dom";
 
 export const AnimalDetail = () => {
-  const { getAnimal } = useContext(AnimalContext);
+  const { animals } = useContext(AnimalContext);
   const [animal, setAnimal] = useState({ location: {}, customer: {} });
 
   // route for this component looks like: /animals/detail/{animal.id}
   const { animalId } = useParams();
 
   useEffect(() => {
-    // getAnimal(animal.id).then((thisAnimal) => setAnimal(thisAnimal));
-    getAnimal(animalId).then(setAnimal);
+    setAnimal(
+      animals.find((a) => a.id === parseInt(animalId)) || {
+        location: {},
+        customer: {},
+      }
+    );
   }, [animalId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
