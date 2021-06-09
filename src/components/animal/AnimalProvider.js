@@ -5,14 +5,19 @@ export const AnimalContext = createContext();
 export const AnimalProvider = (props) => {
   const apiURL = "http://localhost:3001";
   const animalsURL = apiURL + "/animals";
+  const embedURLparams = "?_expand=location&_expand=customer&_sort=location.id";
   const [animals, setAnimals] = useState([]);
 
   const getAnimals = () => {
-    return fetch(
-      animalsURL + "?_expand=location&_expand=customer&_sort=location.id"
-    )
+    return fetch(animalsURL + embedURLparams)
       .then((res) => res.json())
       .then(setAnimals);
+  };
+
+  const getAnimalById = (id) => {
+    return fetch(animalsURL + `/${id}` + embedURLparams).then((res) =>
+      res.json()
+    );
   };
 
   const addAnimal = (animalObj) => {
@@ -26,7 +31,9 @@ export const AnimalProvider = (props) => {
   };
 
   return (
-    <AnimalContext.Provider value={{ animals, getAnimals, addAnimal }}>
+    <AnimalContext.Provider
+      value={{ animals, getAnimals, addAnimal, getAnimalById }}
+    >
       {props.children}
     </AnimalContext.Provider>
   );
