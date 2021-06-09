@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AnimalContext } from "./AnimalProvider";
 import "./Animal.css";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export const AnimalList = () => {
   const { animals, getAnimals } = useContext(AnimalContext);
@@ -20,7 +20,9 @@ export const AnimalList = () => {
       <section className="animals">
         {animals.map((animal) => (
           <div className="animal" id={"animal--" + animal.id} key={animal.id}>
-            <h3 className="animal__name">Name: {animal.name}</h3>
+            <Link className="animal__name" to={`/animals/detail/${animal.id}`}>
+              {animal.name}
+            </Link>
             <div className="animal__breed">Breed: {animal.breed}</div>
           </div>
         ))}
