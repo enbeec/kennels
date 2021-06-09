@@ -19,6 +19,7 @@ export const LocationDetail = () => {
     <section className="location">
       <h3 className="location__name">{location.name}</h3>
       <div>{location.address}</div>
+
       {/* TODO refactor into a component of animal  */}
       <h4>Animals</h4>
       <div className="location__animals">
