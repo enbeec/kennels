@@ -5,12 +5,19 @@ export const LocationContext = createContext();
 export const LocationProvider = (props) => {
   const apiURL = "http://localhost:3001";
   const locationsURL = apiURL + "/locations";
+  const embedURLparams = "?_embed=animals&_embed=employees";
   const [locations, setLocations] = useState([]);
 
   const getLocations = () => {
-    return fetch(locationsURL)
+    return fetch(locationsURL + embedURLparams)
       .then((res) => res.json())
       .then(setLocations);
+  };
+
+  const getLocationById = (id) => {
+    return fetch(locationsURL + `/${id}` + embedURLparams).then((res) =>
+      res.json()
+    );
   };
 
   const addLocation = (locationObj) => {
@@ -24,7 +31,9 @@ export const LocationProvider = (props) => {
   };
 
   return (
-    <LocationContext.Provider value={{ locations, getLocations, addLocation }}>
+    <LocationContext.Provider
+      value={{ locations, getLocations, addLocation, getLocationById }}
+    >
       {props.children}
     </LocationContext.Provider>
   );
